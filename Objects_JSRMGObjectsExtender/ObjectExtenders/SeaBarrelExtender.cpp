@@ -27,7 +27,7 @@ namespace seaBarrel
         {
             *seaBarrel = {};
             // Рандомим тип ресурса
-            seaBarrel->resType = static_cast<INT16>(rand() % 4 + 1); // от 0 до 4 включительно
+            seaBarrel->resType = static_cast<INT16>(rand() % 4); // от 0 до 4 включительно
             // Пустой результат и ртуть не сдвигаем.
             // Значения 2, 3, 4 превращаются в 3, 4, 5.
             if (seaBarrel->resType > 1)

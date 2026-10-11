@@ -27,7 +27,7 @@ namespace jetsam {
         {
             *jetsam = {};
             // Рандомим тип ресурса
-            jetsam->state = rand() % 3 + 1; // от 0 до 3 включительно
+            jetsam->state = rand() % 3; // от 0 до 3 включительно
 
             return true;
         }
