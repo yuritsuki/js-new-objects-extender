@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A7BC034-952D-4D5C-91C2-0E21EA177E42}</ProjectGuid>
+    <RootNamespace>Objects_JSRMGObjectsExtender</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.era</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.era</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseClasses.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="JSH3ApiCompat.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ObjectExtenders\AncientLampExtender.h" />
+    <ClInclude Include="ObjectExtenders\AltarOfManaExtender.h" />
+    <ClInclude Include="ObjectExtenders\DreamTeacherExtender.h" />
+    <ClInclude Include="ObjectExtenders\FlagsExtender.h" />
+    <ClInclude Include="ObjectExtenders\GraveExtender.h" />
+    <ClInclude Include="ObjectExtenders\H3MapItemNew.h" />
+    <ClInclude Include="ObjectExtenders\HermitsShackExtender.h" />
+    <ClInclude Include="ObjectExtenders\HillFortExtender.h" />
+    <ClInclude Include="ObjectExtenders\JetsamExtender.h" />
+    <ClInclude Include="ObjectExtenders\JunkmanExtender.h" />
+    <ClInclude Include="ObjectExtenders\MineralSpringExtender.h" />
+    <ClInclude Include="ObjectExtenders\ObservatoryExtender.h" />
+    <ClInclude Include="ObjectExtenders\ProspectorExtender.h" />
+    <ClInclude Include="ObjectExtenders\SeaBarrelExtender.h" />
+    <ClInclude Include="ObjectExtenders\SeafaringAcademyExtender.h" />
+    <ClInclude Include="ObjectExtenders\SkeletonTransformerExtender.h" />
+    <ClInclude Include="ObjectExtenders\TempleOfLoyaltyExtender.h" />
+    <ClInclude Include="ObjectExtenders\TeamVisitFlags.h" />
+    <ClInclude Include="ObjectExtenders\TownGateExtender.h" />
+    <ClInclude Include="ObjectExtenders\TrailblazerExtender.h" />
+    <ClInclude Include="ObjectExtenders\VialOfManaExtender.h" />
+    <ClInclude Include="ObjectExtenders\WarlocksLabExtender.h" />
+    <ClInclude Include="ObjectExtenders\WateringPlaceExtender.h" />
+    <ClInclude Include="ObjectExtenders\WaterObjects.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\headers\Era\era.cpp" />
+    <ClCompile Include="ExtraHints.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="ObjectExtenders\AncientLampExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\AltarOfManaExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\DreamTeacherExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\FlagsExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\GraveExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\H3MapItemNew.cpp" />
+    <ClCompile Include="ObjectExtenders\HermitsShackExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\HillFortExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\JetsamExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\JunkmanExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\MineralSpringExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\ObservatoryExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\ProspectorExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\SeaBarrelExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\SeafaringAcademyExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\SkeletonTransformerExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\TempleOfLoyaltyExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\TeamVisitFlags.cpp" />
+    <ClCompile Include="ObjectExtenders\TownGateExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\TrailblazerExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\VialOfManaExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\WarlocksLabExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\WateringPlaceExtender.cpp" />
+    <ClCompile Include="ObjectExtenders\WaterObjects.cpp" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <OmitFramePointers>false</OmitFramePointers>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <SDLCheck>false</SDLCheck>
+      <ConformanceMode>false</ConformanceMode>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PROJECT_NAME="$(ProjectName)";_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LinkIncremental>true</LinkIncremental>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <SDLCheck>false</SDLCheck>
+      <ConformanceMode>false</ConformanceMode>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PROJECT_NAME="$(ProjectName)";_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkIncremental>false</LinkIncremental>
+      <SubSystem>Windows</SubSystem>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

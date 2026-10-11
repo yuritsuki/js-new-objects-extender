@@ -1,0 +1,44 @@
+# Visual Studio user and workspace files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.docstates.json
+*.vcxproj.user
+*.vcxproj.filters.user
+
+# Build output
+/bin/
+/obj/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+/x64/
+/x86/
+
+# MSVC intermediate files and logs
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.idb
+*.ilk
+*.exp
+*.lib
+*.era
+*.map
+*.log
+*.tlog
+*.lastbuildstate
+*.cache
+*.res
+*.tmp
+
+# IDE/editor state
+.vscode/
+.idea/
