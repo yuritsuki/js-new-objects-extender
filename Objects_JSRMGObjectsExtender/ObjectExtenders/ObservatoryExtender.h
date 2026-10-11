@@ -3,7 +3,7 @@
 
 namespace observatory {
     // type 146, subtype 1
-    constexpr int WATER_OBSERVATORY_OBJECT_SUBTYPE = 1;
+    constexpr int WATER_OBSERVATORY_OBJECT_SUBTYPE = 13;
     constexpr int VISION_RADIUS_GIVEN = 2;
 
     struct H3MapItemObservatory

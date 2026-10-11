@@ -4,7 +4,7 @@
 namespace townGate
 {
     // type 146, subtype 3
-    constexpr int TOWN_GATE_OBJECT_SUBTYPE = 3;
+    constexpr int TOWN_GATE_OBJECT_SUBTYPE = 14;
 
     struct H3MapItemTownGate
     {

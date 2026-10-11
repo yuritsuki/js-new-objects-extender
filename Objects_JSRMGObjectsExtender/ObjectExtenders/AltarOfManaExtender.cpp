@@ -131,7 +131,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -148,7 +148,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint1_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -165,7 +165,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint2_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -182,7 +182,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint3_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -199,7 +199,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint3_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -216,7 +216,7 @@ namespace altarOfMana
             LPCSTR dlgHint = EraJS::read(
                 H3String::Format(
                     dlgHint4_key,
-                    extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                    extender::HOTA_OBJECT_TYPE,
                     ALTAR_OF_MANA_OBJECT_SUBTYPE
                 ).String());
 
@@ -231,7 +231,7 @@ namespace altarOfMana
         if (g_AltarOfMana)
         {
             LPCSTR name = RMGObjectInfo::GetObjectName(
-                extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+                extender::HOTA_OBJECT_TYPE,
                 ALTAR_OF_MANA_OBJECT_SUBTYPE);
 
             c->eax = (_ptr_)name;
@@ -332,7 +332,7 @@ namespace altarOfMana
     AltarOfManaExtender::AltarOfManaExtender()
         : H3ActiveObject<H3MapItemAltarOfMana>(
             "EraPlugin.AltarOfManaExtender.js",
-            extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+            extender::HOTA_OBJECT_TYPE,
             ALTAR_OF_MANA_OBJECT_SUBTYPE)
     {
         CreatePatches();

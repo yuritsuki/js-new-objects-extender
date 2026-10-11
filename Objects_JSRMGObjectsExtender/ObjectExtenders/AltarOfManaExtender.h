@@ -4,7 +4,7 @@
 namespace altarOfMana
 {
     // type 146, subtype 2
-    constexpr int ALTAR_OF_MANA_OBJECT_SUBTYPE = 2;
+    constexpr int ALTAR_OF_MANA_OBJECT_SUBTYPE = 15;
 
     constexpr LPCSTR dlgHint_key = "RMG.objectGeneration.%d.%d.text.dlgHint";
     constexpr LPCSTR dlgHint1_key = "RMG.objectGeneration.%d.%d.text.dlgHint1";

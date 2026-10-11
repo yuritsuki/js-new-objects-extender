@@ -43,7 +43,7 @@ namespace observatory {
     ObservatoryExtender::ObservatoryExtender()
         : H3ActiveObject<H3MapItemObservatory>(
             "EraPlugin.ObservatoryExtender.js",
-            extender::HOTA_UNREACHABLE_OBJECT_TYPE,
+            extender::HOTA_OBJECT_TYPE,
             WATER_OBSERVATORY_OBJECT_SUBTYPE)
     {
         CreatePatches();
