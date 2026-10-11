@@ -420,6 +420,34 @@ _LHF_(LoHook_004BAF82)
     return NO_EXEC_DEFAULT;
 }
 
+_LHF_(LoHook_0049E18B)
+{
+    // Максимум 254 до вставки лодки в вектор
+    if (c->eax < MAX_BOATS_COUNT)
+    {
+        // Через msgbox
+        c->return_address = 0x49E1BF;
+    }
+    // Перепрыгиваем 5 байт в любом случае, чтобы не выполнять стандартную инструкцию
+    return NO_EXEC_DEFAULT;
+}
+
+_LHF_(LoHook_005D3AE6)
+{
+    // Максимум 254 до вставки лодки в вектор
+    if (c->eax >= MAX_BOATS_COUNT)
+    {
+        // В msgBox
+        c->return_address = 0x5D3C29;
+    }
+    else
+    {
+        c->return_address = 0x5D3AEF;
+    }
+
+    return NO_EXEC_DEFAULT;
+}
+
 // При посещении водной таверны, запоминаем, что посещение длится сейчас.
 void __stdcall HiHook_ObjTavernVisit_SetTavernIfWater(HiHook* h, _dword_ coords)
 {
@@ -703,6 +731,10 @@ void WaterTavernsAndPrisons()
     // максимальный положительный imm8, корректно представимый через 83 /7, — 0x7F
     //_PI->WriteByte(0x4BAF82 + 2, 0xff);
     _PI->WriteLoHook(0x4BAF82, LoHook_004BAF82);
+    //_PI->WriteByte(0x49E18B + 2, 0xff);
+    _PI->WriteLoHook(0x49E18B, LoHook_0049E18B);
+    //_PI->WriteByte(0x5D3AE6 + 2, 0xff);
+    _PI->WriteLoHook(0x5D3AE6, LoHook_005D3AE6);
 
     // При посещении водной таверны, запоминаем, что посещение длится сейчас.
     _PI->WriteHiHook(0x5d8290, SPLICE_, EXTENDED_, STDCALL_, HiHook_ObjTavernVisit_SetTavernIfWater);
