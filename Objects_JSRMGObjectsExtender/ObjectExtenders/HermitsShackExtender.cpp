@@ -99,21 +99,8 @@ namespace hermitsShack
         {
             ProcObjectFlagsVisitedByTeam(hero, objectType, objectSubtype);
 
-            const bool isVisitedByHero = H3MapItemHermitsShack::IsVisitedByHero(hermitsShack, hero);
-            if (isVisitedByHero)
-            {
-                if (isHuman)
-                {
-                    FASTCALL_12(void, 0x4F6C00,
-                        this->GetVisitedMessage().String(),
-                        1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
-                }
-                return true;
-            }
-
-
             // Check basic or advanced secondary skills
-            int SECONDARY_SKILLS = h3::limits::SECONDARY_SKILLS;
+            int SECONDARY_SKILLS = static_cast<int>(ByteAt(0x54AF5F + 2));
             std::vector<int> skillIds;
             
             int i = 0;
@@ -126,36 +113,60 @@ namespace hermitsShack
                 i++;
             }
 
+            // Все слоты заняты экспертными скиллами
+            if (skillIds.empty() && hero->secSkillCount >= 8)
+            {
+                if (isHuman)
+                {
+                    FASTCALL_12(void, 0x4F6C00,
+                        this->GetCannotVisitMessage().String(),
+                        1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
+                }
+                return true;
+            }
+
+            const bool isVisitedByHero = H3MapItemHermitsShack::IsVisitedByHero(hermitsShack, hero);
+            if (isVisitedByHero)
+            {
+                if (isHuman)
+                {
+                    FASTCALL_12(void, 0x4F6C00,
+                        this->GetVisitedMessage().String(),
+                        1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
+                }
+                return true;
+            }
+
             // Нет скиллов для апа
             if (skillIds.empty())
             {
-                // и все слоты заняты экспертными скиллами
-                if (hero->secSkillCount >= 8)
+                if (isHuman)
                 {
-                    if (isHuman)
-                    {
-                        FASTCALL_12(void, 0x4F6C00,
-                            this->GetCannotVisitMessage().String(),
-                            1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
-                    }
-                }
-                // есть слоты, но нет базовых/продвинутых скиллов
-                else
-                {
-                    if (isHuman)
-                    {
-                        FASTCALL_12(void, 0x4F6C00,
-                            this->GetNoBasicOrAdvancedSkillMessage().String(),
-                            1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
-                    }
+                    FASTCALL_12(void, 0x4F6C00,
+                        this->GetNoBasicOrAdvancedSkillMessage().String(),
+                        1, -1, -1, -1, 0, -1, 0, -1, 0, -1, -777);
                 }
             }
             // Есть скиллы
             else
             {
-                int size = static_cast<int>(skillIds.size());
-                int random = H3Random::Rand(1, size);
-                int skillId = skillIds[random - 1];
+                const int size = static_cast<int>(skillIds.size());
+
+                // Реализация предетерминированного рандома
+                const UINT32 savedSeed =
+                    H3Random::ThreadLocalSingleton::Get().CurrentSeed();
+
+                const UINT32 shackSeed =
+                    310111u * pos.GetX() +
+                    248071u * pos.GetY() +
+                    276589u * pos.GetZ() +
+                    155303u;
+
+                H3Random::Srand(shackSeed);
+                const int random = H3Random::Rand(1, size);
+                H3Random::Srand(savedSeed);
+
+                const int skillId = skillIds[random - 1];
                 int skillLvl = int(hero->secSkill[skillId]);
 
                 if (isHuman)

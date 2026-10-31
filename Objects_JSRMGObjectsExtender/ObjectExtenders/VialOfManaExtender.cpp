@@ -56,7 +56,7 @@ namespace vialOfMana
             {
                 manaPtsFromVial = mapItem->setup;
                 int missedManaPts = maxManaPts - currManaPts;
-                if (mapItem->setup > missedManaPts)
+                if (manaPtsFromVial > missedManaPts)
                     manaPtsFromVial = missedManaPts + (manaPtsFromVial - missedManaPts) / 2;
             }
             else
