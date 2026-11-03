@@ -15836,6 +15836,55 @@ namespace h3
 
 namespace h3
 {
+	struct H3ReplayAction
+	{
+		_H3API_SIZE_(0x8);
+
+		h3func* vTable;       // +00: базовая таблица — 0x63DE74
+		INT8 playerId;        // +04: игрок, в чей ход записано действие
+		UINT8 _padding[3];    // +05..07: выравнивание
+
+		// +00: виртуальный удаляющий деструктор
+		H3ReplayAction* vDelete(UINT32 flags)
+		{
+			return THISCALL_2(H3ReplayAction*, vTable[0], this, flags);
+		}
+
+		// +04: идентификатор действия — eReplayAction
+		eReplayAction GetType()
+		{
+			return THISCALL_1(eReplayAction, vTable[1], this);
+		}
+
+		// +08: чтение из сохранения
+		BOOL8 Read(void* stream, INT32 saveVersion)
+		{
+			return THISCALL_3(BOOL8, vTable[2], this, stream, saveVersion);
+		}
+
+		// +0C: запись в сохранение
+		BOOL8 Write(void* stream)
+		{
+			return THISCALL_2(BOOL8, vTable[3], this, stream);
+		}
+
+		// +10: воспроизведение действия
+		BOOL8 Redo(BOOL8 redraw)
+		{
+			return THISCALL_2(BOOL8, vTable[4], this, redraw);
+		}
+
+		// +14: отмена действия
+		void Undo()
+		{
+			THISCALL_1(void, vTable[5], this);
+		}
+	};
+	_H3API_ASSERT_SIZE_(H3ReplayAction);
+}
+
+namespace h3
+{
 	_H3API_DECLARE_(Main);
 	struct H3MapItem;
 	struct H3SetupTown;
@@ -15862,9 +15911,9 @@ namespace h3
 		_H3API_SIZE_(0x4E7D0);
 		_H3API_GET_INFO_(0x699538, H3Main);
 
-	protected:
-		h3unk8 _f_0000[4];
 	public:
+		/** @brief [00] */
+		h3unk8 _f_0000[4];
 		/** @brief [04] */
 		INT8 disabledShrines[70];
 		/** @brief [4A] */
@@ -15944,14 +15993,16 @@ namespace h3
 		INT8 randomArtifacts[144];
 		/** @brief [4E2B4] */
 		INT8 artifactsAllowed[144];
-	//protected:
-		/**
-		 * When visiting one of these objects, whole team gets set as visited
-		 * Exists as an array[32] (Shrines are referred as index 19,20,21 ca. 4A9BAF, and save/read uses 32 bytes)
-		 */
-		/** @brief [4E344] */
+		//protected:
+			/**
+			 * When visiting one of these objects, whole team gets set as visited
+			 * Exists as an array[32] (Shrines are referred as index 19,20,21 ca. 4A9BAF, and save/read uses 32 bytes)
+			 */
+			 /** @brief [4E344] */
 		H3PlayersBitfield visitedBuoy;
+		/** @brief [4E345] */
 		H3PlayersBitfield visitedSwanPond;
+		/** @brief [4E346] */
 		H3PlayersBitfield visitedFaerieRing;
 		H3PlayersBitfield visitedFountainFortune;
 		H3PlayersBitfield visitedGardenRevelation;
@@ -15970,7 +16021,10 @@ namespace h3
 		H3PlayersBitfield visitedMermaid;
 		H3PlayersBitfield visitedRallyFlag;
 		H3PlayersBitfield visitedTreeKnowledge;
-		H3PlayersBitfield visitedShrines;
+		/** @brief [4E357] */
+		H3PlayersBitfield visitedShrineOfIncantation;
+		H3PlayersBitfield visitedShrineOfGesture;
+		H3PlayersBitfield visitedShrineOfThought;
 		H3PlayersBitfield visitedIdolFortune;
 		H3PlayersBitfield visitedTemples;
 		H3PlayersBitfield visitedUniversities;
@@ -16020,21 +16074,23 @@ namespace h3
 		h3unk8 _f_4E674[4];
 	public:
 		/** @brief [4E678] H3Position*/
-		H3Vector<UINT32> monolithTwoWay[8];
+		H3Vector<H3Position> monolithTwoWay[8];
 		/** @brief [4E6F8] H3Position*/
-		H3Vector<UINT32> monolithOneWay[8];
+		H3Vector<H3Position> monolithOneWay[8];
 	protected:
 		h3unk8 _f_4E778[4];
 	public:
 		/** @brief [4E77C] H3Position*/
-		H3Vector<UINT32> whirlPools;
+		H3Vector<H3Position> whirlPools;
 		/** @brief [4E78C] H3Position*/
-		H3Vector<UINT32> subterraneanGatesDestination;
+		H3Vector<H3Position> subterraneanGatesDestination;
 		/** @brief [4E79C] H3Position*/
-		H3Vector<UINT32> subterraneanGatesID;
-	protected:
-		H3Vector<h3unk8*> replayActions;
-		H3Vector<h3unk8*> _f_4E7BC;
+		H3Vector<H3Position> subterraneanGatesID;
+		/** @brief [4E7AC] */
+		H3Vector<H3ReplayAction*> replayActions;
+		/** @brief [4E7BC] */
+		H3Vector<h3unk8*> questMonsters;
+		/** @brief [4E7CC] */
 		h3unk8 _f_4E7CC[4];
 
 	public:
