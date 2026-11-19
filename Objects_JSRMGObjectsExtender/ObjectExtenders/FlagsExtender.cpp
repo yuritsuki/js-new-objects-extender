@@ -24,7 +24,7 @@ _LHF_(LoHook_Crbank_MoraleModifList)
 	//	// Сообщение.
 	//	str->Append("\n");
 	//	str->Append(EraJS::read(
-	//		H3String::Format(H3HeroExtFlagsManager::graveEffectDesc_key, extender::ERA_OBJECT_TYPE, grave::GRAVE_OBJECT_SUBTYPE)
+	//		H3String::Format(H3HeroExtFlagsManager::graveEffectDesc_key, grave::GRAVE_OBJECT_TYPE, grave::GRAVE_OBJECT_SUBTYPE)
 	//		.String()));
 
 	//	// Счётчик боевого духа.
@@ -36,7 +36,7 @@ _LHF_(LoHook_Crbank_MoraleModifList)
 	{
 		// Сообщение.
 		str->Append("\n");
-		str->Append(EraJS::read(H3String::Format(effectDesc_key, extender::ERA_OBJECT_TYPE, grave::GRAVE_OBJECT_SUBTYPE).String()));
+		str->Append(EraJS::read(H3String::Format(effectDesc_key, grave::GRAVE_OBJECT_TYPE, grave::GRAVE_OBJECT_SUBTYPE).String()));
 		// Счётчик боевого духа.
 		IntAt(c->ebp - 0x10) -= grave::MORALE_PENALTY;
 	}
@@ -77,6 +77,8 @@ void __stdcall HiHook_H3HeroReset(HiHook* h, H3Hero* hero, INT16 heroId)
 
 _ERH_(OnAfterBattleUniversal)
 {
+	// Аналог: HiHook_HeroModFlags_ResetAfterBattle - 101476C0
+	// Churchyard сбрасывается в основной части RMG_CustomizeObjectProperties
 	for (size_t i = 0; i < 2; i++)
 	{
 		H3Hero* hero = P_CombatMgr->hero[i];
@@ -84,7 +86,6 @@ _ERH_(OnAfterBattleUniversal)
 		{
 			mineralSpring::H3MapItemMineralSpring::SetAsNotVisited(hero);
 			grave::H3MapItemGrave::SetAsNotVisited(hero);
-
 		}	
 	}
 }
